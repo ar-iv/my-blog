@@ -1,8 +1,8 @@
 <?php 
 
 return [
-	'login' => 'admin',
-	'password' => '1234',
+	'login' => 'root',
+	'password' => '8585',
 ];
 
  ?>

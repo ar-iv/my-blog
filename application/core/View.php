@@ -27,7 +27,7 @@ class View
         if (file_exists($path)) 
         {
             ob_start();
-            require 'application/views/'.$this->path.'.php';
+            require $path;
             $content = ob_get_clean();
             require 'application/views/layouts/'.$this->layout.'.php';
         } else 
@@ -49,7 +49,8 @@ class View
     // Переадресация
     public function redirect($url)
     {
-        header('location: '.$url);
+        // !!!
+        header('location: /'.$url);
         exit;
     }
 

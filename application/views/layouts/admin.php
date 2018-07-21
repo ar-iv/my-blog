@@ -11,7 +11,7 @@
         <script src="/public/scripts/form.js"></script>
         <script src="/public/scripts/popper.js"></script>
         <script src="/public/scripts/bootstrap.js"></script>
-        <script src="/public/scripts/core.js"></script>
+        <!-- <script src="/public/scripts/core.js"></script> -->
     </head>
     <body class="fixed-nav sticky-footer bg-dark">
         <?php if ($this->route['action'] != 'login'): ?>

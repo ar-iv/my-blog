@@ -50,14 +50,14 @@ class Router
 	{
 		if ($this->match()) 
 		{
-			$path = 'application\controllers\\'. ucfirst($this->params['controller']) .'Controller';
+            $path = 'application\controllers\\'.ucfirst($this->params['controller']).'Controller';
 			if (class_exists($path)) 
 			{
 				$action = $this->params['action'].'Action';
 				if (method_exists($path, $action)) 
 				{
-					$controller = new $path($this->params);
-					$controller->$action();
+                    $controller = new $path($this->params);
+                    $controller->$action();
 				} else 
 				{
 					// echo 'Action <b>'. $action .'</b> не найден';

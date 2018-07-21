@@ -16,10 +16,10 @@ abstract class Controller
     public function __construct($route)
     {
         $this->route = $route;
-        if (!$this->checkAcl()) {
+        if (!$this->checkAcl()) 
+        {
             View::errorCode(403);
         }
-
         $this->view = new View($route);
         $this->model = $this->loadModel($route['controller']);
     }
@@ -29,7 +29,8 @@ abstract class Controller
     {
     	$path = 'application\models\\'.ucfirst($name);
     	// Проверка наличия класса
-    	if (class_exists($path)) {
+    	if (class_exists($path)) 
+        {
     		return new $path;
     	}
     }
@@ -37,16 +38,20 @@ abstract class Controller
     public function checkAcl()
     {
         $this->acl = require 'application/acl/'.$this->route['controller'].'.php';
-        if ($this->isAcl('all')) {
+        if ($this->isAcl('all')) 
+        {
             return true;
         }
-        elseif (isset($_SESSION['autorizr']['id']) and $this->isAcl('authorize')) {
+        elseif (isset($_SESSION['authorize']['id']) and $this->isAcl('authorize')) 
+        {
             return true;
         }
-        elseif (!isset($_SESSION['autorizr']['id']) and $this->isAcl('guest')) {
+        elseif (!isset($_SESSION['authorize']['id']) and $this->isAcl('guest')) 
+        {
             return true;
         }
-        elseif (isset($_SESSION['admin']['id']) and $this->isAcl('admin')) {
+        elseif (isset($_SESSION['admin']) and $this->isAcl('admin')) 
+        {
             return true;
         }
         return false;
