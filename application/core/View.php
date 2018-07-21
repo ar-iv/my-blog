@@ -49,7 +49,6 @@ class View
     // Переадресация
     public function redirect($url)
     {
-        // !!!
         header('location: /'.$url);
         exit;
     }
@@ -65,6 +64,8 @@ class View
     {
         exit(json_encode(['url' => $url]));
     }
+
+    
 }
 
  ?>

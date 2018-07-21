@@ -10,6 +10,7 @@
         <div class="container">
             <p><b>Ошибка 403</b>. Доступ запрещен</p>
             <p><a href="/">Перейти на главную</a></p>
+            <p><a onclick="javascript:history.back();">Назад</a></p>
         </div>
     </body>
 </html>

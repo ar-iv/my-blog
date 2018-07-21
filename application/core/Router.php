@@ -60,18 +60,19 @@ class Router
                     $controller->$action();
 				} else 
 				{
-					// echo 'Action <b>'. $action .'</b> не найден';
+					// $oldController->$action();
+					// Action не найден
 					View::errorCode(404);
 				}
 			} else 
 			{
-				// echo 'Класс <b>'. $path .'</b> не найден';
+				// Class не найден
 				View::errorCode(404);
 			}
 		}
 		else 
 		{
-			// echo 'Маршрут НЕ найден.';
+			// Маршрут не найден
 			View::errorCode(404);
 		}
 	}

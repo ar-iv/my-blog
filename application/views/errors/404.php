@@ -10,6 +10,7 @@
         <div class="container">
             <p><b>Ошибка 404</b>. Страница не найдена</p>
             <p><a href="/">Перейти на главную</a></p>
+            <p><a onclick="javascript:history.back();">Назад</a></p>
         </div>
     </body>
 </html>

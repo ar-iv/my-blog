@@ -1,4 +1,4 @@
-<header class="masthead" style="background-image: url('/public/images/contact-bg.jpg')">
+<header class="masthead" style="background-image: url('/public/images/Is0vrBuRcA8.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">

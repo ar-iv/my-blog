@@ -50,6 +50,11 @@ return [
 		'action' => 'delete',
 	],
 
+	'admin/posts' => [
+		'controller' => 'admin',
+		'action' => 'posts',
+	],
+
 	// end AdminController
 ];
 
