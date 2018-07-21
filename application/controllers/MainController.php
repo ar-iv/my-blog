@@ -3,6 +3,7 @@
 namespace application\controllers;
 
 use application\core\Controller;
+use application\models\Main;
 
 /**
  * MainController
@@ -11,14 +12,32 @@ class MainController extends Controller
 {
 	public function indexAction()
 	{
-		$result = $this->model->getNews();
-		$vars = [
-			'news' => $result,
-		];
-		$this->view->render('Главная страница.', $vars);
+		$this->view->render('Главная страница.');
+	}
 
-		
-		// debug($result);
+	public function aboutAction()
+	{
+		$this->view->render('Обо мне.');
+	}
+
+	public function contactAction()
+	{
+		if (!empty($_POST)) 
+		{
+			if (!$this->model->contactValidate($_POST)) 
+			{
+				$this->view->message('error', $this->model->error);
+			}
+			// Отправка формы
+			mail('puwifaji@loketa.com', 'Сообщение из блога от '.$_POST['name'].' , '.$_POST['email'].': ', $_POST['text']);
+			$this->view->message('success', 'Сообщение отправлено Администратору.');			
+		}
+		$this->view->render('Контакты.');
+	}
+
+	public function postAction()
+	{
+		$this->view->render('Посты.');
 	}
 }
 

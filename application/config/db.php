@@ -2,9 +2,9 @@
 
 return [
 	'host' => 'localhost',
-	'dbname' => 'mvc-framework',
+	'dbname' => 'my-blog',
 	'user' => 'root',
 	'password' => '8585',
-]
+];
 
  ?>
