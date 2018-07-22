@@ -59,7 +59,7 @@ class Admin extends Model
 			'description' => $post['description'],
 			'dtext' => $post['text'],
 		];
-		$this->db->query("INSERT INTO `posts`(`name`, `description`, `text`) VALUES  ( :name, :description, :dtext)", $params);
+		$this->db->query("INSERT INTO `posts`(`name`, `description`, `text`) VALUES (:name, :description, :dtext)", $params);
 		return $this->db->lastInsertId();
 	}
 
@@ -70,7 +70,24 @@ class Admin extends Model
 		// $img->setImageCompressionQuality(80);
 		// $img->writeImage('public/materials/'.$id.'.jpg');
 
-		move_uploaded_file($path, 'public/materials/'.$id.'jpg');
+		move_uploaded_file($path, 'public/materials/'.$id.'.jpg');
+	}
+
+	public function isPostExists($id)
+	{
+		$params = [
+			'id' => $id,
+		];
+		return $this->db->column('SELECT id FROM posts WHERE id = :id', $params);
+	}
+
+	public function postDelete($id)
+	{
+		$params = [
+			'id' => $id,
+		];
+		$this->db->query('DELETE FROM posts WHERE id = :id', $params);
+		unlink('public/materials/'.$id.'.jpg');
 	}
 }
 

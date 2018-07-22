@@ -73,8 +73,14 @@ class AdminController extends Controller
 
 	public function deleteAction()
 	{
-		// debug($this->route['id']);
-		exit('Удалиение.');
+		if (!$this->model->isPostExists($this->route['id'])) 
+		{
+			// $this->view->message('error', $this->route['id']);
+			$this->view->errorCode(404);
+		}
+		$this->model->postDelete($this->route['id']);
+		$this->view->redirect('admin/posts');
+		// exit('Удалиение: '.$this->route['id']);
 	}
 
 	public function postsAction()
