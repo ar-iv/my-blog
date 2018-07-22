@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
             <?php if (empty($list)): ?>
-                <p>Список постов пуст</p>
+                <p>Постов нет.</p>
             <?php else: ?>
                 <?php foreach ($list as $val): ?>
                     <div class="post-preview">
