@@ -46,10 +46,16 @@ class AdminController extends Controller
 	public function addAction()
 	{
 		if (!empty($_POST)) {
-			if (!$this->model->postValidate($_POST, 'add')) {
+			if (!$this->model->postValidate($_POST, 'add')) 
+			{
 				$this->view->message('error', $this->model->error);
 			}
-			$this->view->message('success', 'Okk');
+			$id = $this->model->postAdd($_POST);
+			if (!$id) {
+				$this->view->message('success', 'Ошибка обработки запроса');
+			}
+			$this->model->postUploadImage($_FILES['img']['tmp_name'], $id);
+			$this->view->message('success', 'Пост добавлен');
 		}
 		$this->view->render('Добавить пост');
 	}
@@ -67,6 +73,7 @@ class AdminController extends Controller
 
 	public function deleteAction()
 	{
+		// debug($this->route['id']);
 		exit('Удалиение.');
 	}
 

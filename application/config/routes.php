@@ -17,7 +17,7 @@ return [
 		'action' => 'contact',
 	],
 
-	'post' => [
+	'post/{id:\d+}' => [
 		'controller' => 'main',
 		'action' => 'post',
 	],
@@ -40,12 +40,12 @@ return [
 		'action' => 'add',
 	],
 
-	'admin/edit' => [
+	'admin/edit/{id:\d+}' => [
 		'controller' => 'admin',
 		'action' => 'edit',
 	],
 
-	'admin/delete' => [
+	'admin/delete/{id:\d+}' => [
 		'controller' => 'admin',
 		'action' => 'delete',
 	],

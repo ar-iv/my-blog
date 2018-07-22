@@ -30,9 +30,6 @@ class View
             require $path;
             $content = ob_get_clean();
             require 'application/views/layouts/'.$this->layout.'.php';
-        } else 
-        {
-            echo 'View не найден: '.$this->path;
         }
     }
 
