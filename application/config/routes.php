@@ -7,6 +7,11 @@ return [
 		'action' => 'index',
 	],
 
+	'{page:\d+}' => [
+		'controller' => 'main',
+		'action' => 'index',
+	],
+
 	'about' => [
 		'controller' => 'main',
 		'action' => 'about',

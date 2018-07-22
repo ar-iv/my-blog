@@ -62,13 +62,26 @@ class AdminController extends Controller
 
 	public function editAction()
 	{
-		if (!empty($_POST)) {
-			if (!$this->model->postValidate($_POST, 'edit')) {
+		if (!$this->model->isPostExists($this->route['id'])) 
+		{
+			$this->view->errorCode(404);
+		}
+		if (!empty($_POST)) 
+		{
+			if (!$this->model->postValidate($_POST, 'edit')) 
+			{
 				$this->view->message('error', $this->model->error);
 			}
-			$this->view->message('success', 'Okk');
+			$this->model->postEdit($_POST, $this->route['id']);
+			if ($_FILES['img']['tmp_name']) {
+				$this->model->postUploadImage($_FILES['img']['tmp_name'], $id);
+			}
+			$this->view->message('success', 'Изменено.');
 		}
-		$this->view->render('Изменить.');
+		$vars = [
+			'data' => $this->model->postData($this->route['id'])[0],
+		];
+		$this->view->render('Редактировать пост: ', $vars);
 	}
 
 	public function deleteAction()

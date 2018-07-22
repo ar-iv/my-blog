@@ -59,7 +59,21 @@ class Admin extends Model
 			'description' => $post['description'],
 			'dtext' => $post['text'],
 		];
-		$this->db->query("INSERT INTO `posts`(`name`, `description`, `text`) VALUES (:name, :description, :dtext)", $params);
+		// $this->db->query("INSERT INTO `posts`(`name`, `description`, `text`) VALUES (:name, :description, :dtext)", $params);
+		$this->db->query('INSERT INTO posts (name, description, text) VALUES (:name, :description, :dtext)', $params);
+		return $this->db->lastInsertId();
+	}
+
+	public function postEdit($post, $id)
+	{
+		$params = [
+			'id' => $id,
+			'name' => $post['name'],
+			'description' => $post['description'],
+			'dtext' => $post['text'],
+		];
+		// $this->db->query("UPDATE 'posts' SET 'name' = :name, 'description' = :description, 'text' = :dtext WHERE id = :id", $params);
+		$this->db->query('UPDATE posts SET name = :name, description = :description, text = :dtext WHERE id = :id', $params);
 		return $this->db->lastInsertId();
 	}
 
@@ -88,6 +102,14 @@ class Admin extends Model
 		];
 		$this->db->query('DELETE FROM posts WHERE id = :id', $params);
 		unlink('public/materials/'.$id.'.jpg');
+	}
+
+	public function postData($id)
+	{
+		$params = [
+			'id' => $id,
+		];
+		return $this->db->row('SELECT * FROM posts WHERE id = :id', $params);
 	}
 }
 
