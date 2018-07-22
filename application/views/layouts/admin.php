@@ -16,7 +16,7 @@
     <body class="fixed-nav sticky-footer bg-dark">
         <?php if ($this->route['action'] != 'login'): ?>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-                <a class="navbar-brand" href="/admin/posts">Админ панель.</a>
+                <a class="navbar-brand" href="/admin/posts">Админ панель</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -38,6 +38,12 @@
                             <a class="nav-link" href="/admin/logout">
                             <i class="fa fa-fw fa-sign-out"></i>
                             <span class="nav-link-text">Выход</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">
+                            <i class="fa fa-fw fa-sign-out"></i>
+                            <span class="nav-link-text">Главная</span>
                             </a>
                         </li>
                     </ul>

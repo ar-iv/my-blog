@@ -55,6 +55,11 @@ return [
 		'action' => 'delete',
 	],
 
+	'admin/posts/{page:\d+}' => [
+		'controller' => 'admin',
+		'action' => 'posts',
+	],
+
 	'admin/posts' => [
 		'controller' => 'admin',
 		'action' => 'posts',

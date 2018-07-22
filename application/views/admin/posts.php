@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <?php if (empty($list)): ?>
-                            <p>Список постов пуст</p>
+                            <p>Постов нет.</p>
                         <?php else: ?>
                             <table class="table">
                                 <tr>

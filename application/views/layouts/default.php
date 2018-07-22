@@ -27,6 +27,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/contact">Обратная связь</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/login">Login</a>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -3,6 +3,8 @@
 namespace application\controllers;
 
 use application\core\Controller;
+use application\lib\Pagination;
+use application\models\Main;
 
 /**
  * AdminController
@@ -21,7 +23,7 @@ class AdminController extends Controller
 	{
 		if (isset($_SESSION['admin'])) 
 		{
-			$this->view->redirect('admin/add');
+			$this->view->redirect('admin/posts');
 		}
 
 		if (!empty($_POST)) 
@@ -31,7 +33,7 @@ class AdminController extends Controller
 				$this->view->message('error', $this->model->error);
 			}
 			$_SESSION['admin'] = true;
-			$this->view->location('admin/add');
+			$this->view->location('admin/posts');
 		}
 		$this->view->render('Вход.');
 	}
@@ -98,7 +100,13 @@ class AdminController extends Controller
 
 	public function postsAction()
 	{
-		$this->view->render('Посты.');
+		$mainModel = new Main;
+		$pagination = new Pagination($this->route, $mainModel->postsCount(), 3);
+		$vars = [
+			'pagination' => $pagination->get(),
+			'list' => $mainModel->postsList($this->route),
+		];
+		$this->view->render('Посты.', $vars);
 	}
 }
 
